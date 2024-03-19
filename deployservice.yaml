@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: centos-app-deployment
+  labels:
+    app: centos
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: centos
+  template:
+    metadata:
+      labels:
+        app: centos
+    spec:
+      containers:
+      - name: centos-container
+        image: falonnengass/my-docker-repo:fal-hub-image #this is my docker image tag on docker hub
+        ports:
+        - containerPort: 80
+          protocol: TCP
+---   # remember to add --- when running differents templates together
+apiVersion: v1
+kind: Service
+metadata:
+  name: centos-app
+spec:
+  type: LoadBalancer #to see the elb
+  selector:
+    app: centos
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+
+
