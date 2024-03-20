@@ -16,7 +16,7 @@ pipeline {
                 script {
                     // Push Docker image to registry
                     withDockerRegistry([credentialsId:'047d29ec-89d1-46ba-a33d-ac41961ea266', url: 'https://index.docker.io/v1/']) {
-                        sh 'docker push falonnengass/my-docker-repo:fal-hub-image v2.0'
+                        sh 'docker push falonnengass/my-docker-repo:fal-hub-imagev2.0'
                     }
                 }
             }
