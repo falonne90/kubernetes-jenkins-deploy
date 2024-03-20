@@ -6,8 +6,9 @@ pipeline {
             steps {
                 script {
                     // Build Docker image
-                    sh 'docker build -t my-docker-repo:fal-hub-image:v2.0 .' //or docker build -t fal-hub-image?
-                }
+                    sh 'docker build -t my-docker-repo/fal-hub-image:v2.0 .' //or docker build -t fal-hub-image?
+                }       
+
             }
         }
         stage('Push Docker Image') {
