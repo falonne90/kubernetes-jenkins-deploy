@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: centos-container
-        image: falonnengass/my-docker-repo:fal-hub-image #this is my docker image tag on docker hub
+        image: falonnengass/my-docker-repo:new-imagev1.0 #this is my docker image tag on docker hub
         ports:
         - containerPort: 80
           protocol: TCP
