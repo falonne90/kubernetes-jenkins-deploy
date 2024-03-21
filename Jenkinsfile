@@ -27,13 +27,107 @@ pipeline {
         stage('Deploy Kubernetes Manifest') {
             steps {
                 script {
+                    // Update kubeconfig for the EKS cluster
+                    sh "aws eks --region us-east-1 update-kubeconfig --name my-cluster"
                     // Apply Kubernetes manifest file
                     sh 'kubectl apply -f deployservice.yaml'
                 }
             }
         }
+        stage('Verify Deployment') {
+            steps {
+                script {
+                    // Verify deployment
+                    sh "kubectl get nodes"
+                    sh "kubectl get pods"
+                    sh "kubectl get deployments"
+                    sh "kubectl get services"
+                    // Additional verification steps can be added here
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            cleanWs()
+        }
+        success {
+            echo "Pipeline succeeded!"
+        }
+        failure {
+            echo "Pipeline failed!"
+        }
     }
 }
+
+
+
+
+
+// pipeline {
+//     agent any
+
+//     stages {
+//         stage('Build Docker Image') {
+//             steps {
+//                 script {
+//                     // Build Docker image; 
+//                     sh 'pwd'
+//                     sh 'ls'
+//                     docker.build("falonnengass/my-docker-repo:new-imagev1.0", "/var/lib/jenkins/workspace/new-pipeline")
+//                     // Replace "/path/to/Dockerfile" with the actual path to your Dockerfile
+//                     sh 'docker images'
+//                 }       
+//             }                
+//         }
+//         stage('Push Docker Image') {
+//             steps {
+//                 script {
+//                     // Push Docker image to registry
+//                     docker.withRegistry('https://index.docker.io/v1/', '047d29ec-89d1-46ba-a33d-ac41961ea266') {
+//                         docker.image('falonnengass/my-docker-repo:new-imagev1.0').push()   
+//                     }
+//                 }
+//             }
+//         }
+//         stage('Deploy Kubernetes Manifest') {
+//             steps {
+//                 script {
+//                      // Update kubeconfig for the EKS cluster
+//                     sh "aws eks --region us-east-1 update-kubeconfig --name my-cluster"
+//                     // Apply Kubernetes manifest file
+//                     sh 'kubectl apply -f deployservice.yaml'
+//                 }
+//             }
+//         }
+//     }
+// }
+//        stage('Verify Deployment') {
+//            steps {
+//                script {
+//                    sh "kubectl get nodes"
+//                    sh "kubectl get pods"
+//                    sh "kubectl get deployments"
+//                    sh "kubectl get services"
+//           // Additional verification steps can be added here
+//         }
+//       }
+//     }
+//   }
+
+//   post {
+//     always {
+//       cleanWs()
+//     }
+//     success {
+//       echo "Pipeline succeeded!"
+//     }
+//     failure {
+//       echo "Pipeline failed!"
+//     }
+//   }
+// }
 
 
 
