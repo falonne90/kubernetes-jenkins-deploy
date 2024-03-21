@@ -8,7 +8,8 @@ pipeline {
                     // Build Docker image
                     sh 'pwd'
                     sh 'ls'
-                    sh 'docker build -t fal-hub-image .'
+                    docker.build("falonnengass/my-docker-repo:new-imagev1.0}", "/var/lib/jenkins/workspace/new-pipeline")
+                    // sh 'docker build -t fal-hub-image .'
                     sh 'docker images'
                 }       
             }                
@@ -18,7 +19,7 @@ pipeline {
                 script {
                     // Push Docker image to registry
                     docker.withRegistry('https://index.docker.io/v1/', '047d29ec-89d1-46ba-a33d-ac41961ea266') {
-                        docker.image('falonnengass/my-docker-repo:fal-hub-image').push()   
+                        docker.image('falonnengass/my-docker-repo:new-imagev1.0').push()   
                     }
                 }
             }
