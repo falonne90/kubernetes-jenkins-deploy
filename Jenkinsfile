@@ -8,8 +8,8 @@ pipeline {
                     // Build Docker image
                     sh 'pwd'
                     sh 'ls'
-                    docker.build("falonnengass/my-docker-repo:new-imagev1.0}", "/var/lib/jenkins/workspace/new-pipeline")
-                    // sh 'docker build -t fal-hub-image .'
+                    docker.build("falonnengass/my-docker-repo:new-imagev1.0", "/var/lib/jenkins/workspace/new-pipeline/Dockerfile")
+                    // Replace "/path/to/Dockerfile" with the actual path to your Dockerfile
                     sh 'docker images'
                 }       
             }                
@@ -38,11 +38,6 @@ pipeline {
 
 
 
-
-
-
-
-
 // pipeline {
 //     agent any
 
@@ -51,8 +46,10 @@ pipeline {
 //             steps {
 //                 script {
 //                     // Build Docker image
-//                     sh 'docker build -t fal-hub-image:v2.0 .'
-
+//                     sh 'pwd'
+//                     sh 'ls'
+//                     docker.build("falonnengass/my-docker-repo:new-imagev1.0}", "/var/lib/jenkins/workspace/new-pipeline")
+//                     // sh 'docker build -t fal-hub-image .'
 //                     sh 'docker images'
 //                 }       
 //             }                
@@ -62,7 +59,7 @@ pipeline {
 //                 script {
 //                     // Push Docker image to registry
 //                     docker.withRegistry('https://index.docker.io/v1/', '047d29ec-89d1-46ba-a33d-ac41961ea266') {
-//                         docker.image('falonnengass/my-docker-repo:fal-hub-image).push()   
+//                         docker.image('falonnengass/my-docker-repo:new-imagev1.0').push()   
 //                     }
 //                 }
 //             }
@@ -76,6 +73,49 @@ pipeline {
 //             }
 //         }
 //     }
+// }
+
+
+
+
+
+
+
+
+
+// // pipeline {
+// //     agent any
+
+// //     stages {
+// //         stage('Build Docker Image') {
+// //             steps {
+// //                 script {
+// //                     // Build Docker image
+// //                     sh 'docker build -t fal-hub-image:v2.0 .'
+
+// //                     sh 'docker images'
+// //                 }       
+// //             }                
+// //         }
+// //         stage('Push Docker Image') {
+// //             steps {
+// //                 script {
+// //                     // Push Docker image to registry
+// //                     docker.withRegistry('https://index.docker.io/v1/', '047d29ec-89d1-46ba-a33d-ac41961ea266') {
+// //                         docker.image('falonnengass/my-docker-repo:fal-hub-image).push()   
+// //                     }
+// //                 }
+// //             }
+// //         }
+// //         stage('Deploy Kubernetes Manifest') {
+// //             steps {
+// //                 script {
+// //                     // Apply Kubernetes manifest file
+// //                     sh 'kubectl apply -f deployservice.yaml'
+// //                 }
+// //             }
+// //         }
+// //     }
 
 
 
