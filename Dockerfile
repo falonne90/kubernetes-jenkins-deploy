@@ -12,7 +12,8 @@ RUN yum -y update
 RUN yum -y install httpd
 RUN yum clean all
 # Copy the local code to the container
-COPY . /var/www/html/
+# COPY . /var/www/html/
+COPY webapp/ .
 # Copy index.html /var/www/html/
 
 # Expose a port (if your application needs it) inthis case i exposed port 80
