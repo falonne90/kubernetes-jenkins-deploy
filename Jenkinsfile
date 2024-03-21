@@ -6,6 +6,8 @@ pipeline {
             steps {
                 script {
                     // Build Docker image
+                    sh 'pwd'
+                    sh 'ls'
                     sh 'docker build -t fal-hub-image .'
                     sh 'docker images'
                 }       
