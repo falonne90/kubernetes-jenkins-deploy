@@ -6,7 +6,7 @@ pipeline {
             steps {
                 script {
                     // Build Docker image
-                    sh 'docker build -t fal-hub-image:v2.0 .'
+                    sh 'docker build -t fal-hub-image'
                     sh 'docker images'
                 }       
             }                
