@@ -21,7 +21,7 @@ spec:
         - containerPort: 80
           protocol: TCP
 ---   # remember to add --- when running differents templates together
-apiVersion: v1
+apiVersion: v1beta1
 kind: Service
 metadata:
   name: centos-app
