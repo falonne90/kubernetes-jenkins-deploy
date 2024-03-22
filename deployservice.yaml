@@ -1,4 +1,4 @@
-apiVersion: apps/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: centos-app-deployment
@@ -21,7 +21,7 @@ spec:
         - containerPort: 80
           protocol: TCP
 ---   # remember to add --- when running differents templates together
-apiVersion: v1beta1
+apiVersion: v1
 kind: Service
 metadata:
   name: centos-app
