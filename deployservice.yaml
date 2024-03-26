@@ -30,7 +30,7 @@ spec:
   selector:
     app: centos
   ports:
-    - protocol: TCP
+    # - protocol: TCP
       port: 80
       targetPort: 80
 
