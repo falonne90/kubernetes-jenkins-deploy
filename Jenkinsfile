@@ -30,7 +30,8 @@ pipeline {
                     // Update kubeconfig for the EKS cluster
                     sh "aws eks --region us-east-1 update-kubeconfig --name my-cluster"
                     // Apply Kubernetes manifest file
-                    sh 'kubectl apply -f deployservice.yaml'
+                    // sh 'kubectl apply -f deployservice.yaml'
+                    sh 'kubectl apply -f deployservice.yaml -v=8'
                 }
             }
         }
