@@ -28,7 +28,7 @@ pipeline {
             steps {
                 script {
                     // Update kubeconfig for the EKS cluster
-                    sh "aws eks --region us-east-1 update-kubeconfig --name my-cluster"
+                    sh "aws eks --region us-east-1 update-kubeconfig --name van-cluster"
                     // Apply Kubernetes manifest file
                     sh 'kubectl apply -f deployservice.yaml'
                     sh 'kubectl apply -f service.yaml'
