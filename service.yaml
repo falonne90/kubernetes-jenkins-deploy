@@ -3,12 +3,35 @@ kind: Service
 metadata:
   name: centos-app
 spec:
-  type: LoadBalancer #to see the elb
+  type: LoadBalancer  # To see the ELB
   selector:
     app: centos
   ports:
-    # - protocol: TCP
-      port: 80
-      targetPort: 80
+  - protocol: TCP  # Add the missing protocol definition
+    port: 80
+    targetPort: 80
+
+
+
+
+
+
+
+
+
+
+
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: centos-app
+# spec:
+#   type: LoadBalancer #to see the elb
+#   selector:
+#     app: centos
+#   ports:
+#     # - protocol: TCP
+#       port: 80
+#       targetPort: 80
 
 
