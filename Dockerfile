@@ -12,9 +12,8 @@ RUN yum -y update
 RUN yum -y install httpd
 RUN yum clean all
 # Copy the local code to the container
-# COPY . /var/www/html/
+COPY webapp . /var/www/html/
 # COPY webapp/ .
-COPY C:\Users\falon\Documents\kubernetes-jenkins-deploy\webapp/ . 
 # COPY webapp/index.html .
 # COPY webapp/license.txt .
 # COPY webapp/js/ js/
