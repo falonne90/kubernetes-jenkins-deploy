@@ -8,7 +8,7 @@ pipeline {
                     // Build Docker image
                     sh 'pwd'
                     sh 'ls'
-                    docker.build("falonnengass/my-docker-repo:new-imagev3.0", "/var/lib/jenkins/workspace/kub-jen-deploy")
+                    docker.build("falonnengass/my-docker-repo:my-imagev3.0", "/var/lib/jenkins/workspace/kub-jen-deploy")
                     // Replace "/path/to/Dockerfile" with the actual path to your Dockerfile
                     sh 'docker images'  
                 }       
@@ -19,7 +19,7 @@ pipeline {
                 script {
                     // Push Docker image to registry
                     docker.withRegistry('https://index.docker.io/v1/', 'dockerhub') {
-                        docker.image('falonnengass/my-docker-repo:new-imagev3.0').push()   
+                        docker.image('falonnengass/my-docker-repo:my-imagev3.0').push()   
                     }
                 }
             }
