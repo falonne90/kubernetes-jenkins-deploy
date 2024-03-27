@@ -18,7 +18,7 @@ pipeline {
             steps {
                 script {
                     // Push Docker image to registry
-                    docker.withRegistry('https://index.docker.io/v1/', '047d29ec-89d1-46ba-a33d-ac41961ea266') {
+                    docker.withRegistry('https://index.docker.io/v1/', 'dockerhub') {
                         docker.image('falonnengass/my-docker-repo:new-imagev1.0').push()   
                     }
                 }
@@ -28,7 +28,7 @@ pipeline {
             steps {
                 script {
                     // Update kubeconfig for the EKS cluster
-                    sh "aws eks --region us-east-1 update-kubeconfig --name van-cluster"
+                    sh "aws eks --region us-east-2 update-kubeconfig --name van-cluster"
                     // Apply Kubernetes manifest file
                     sh 'kubectl apply -f deployservice.yaml'
                     sh 'kubectl apply -f service.yaml'
