@@ -2,18 +2,21 @@
 FROM centos:7
 
 LABEL description="this image is build for Apache containers"
-LABEL maintener="Falonne"
+LABEL maintainer="Falonne"
 
 # Set the working directory
-# WORKDIR /DOCKER-web-App  
+WORKDIR /var/www/html/ 
 
 # update package list and install Apache httpd
 RUN yum -y update 
 RUN yum -y install httpd
 RUN yum clean all
+
 # Copy the local code to the container
-COPY . /var/www/html/
-# COPY webapp/ .
+# COPY . /var/www/html/ 
+#NB: I added my dockerfile in the webapp folder locally
+
+COPY webapp/ .
 # COPY webapp/index.html .
 # COPY webapp/license.txt .
 # COPY webapp/js/ js/
