@@ -12,7 +12,7 @@ RUN yum -y update
 RUN yum -y install httpd
 RUN yum clean all
 # Copy the local code to the container
-COPY webapp . /var/www/html/
+COPY . /var/www/html/
 # COPY webapp/ .
 # COPY webapp/index.html .
 # COPY webapp/license.txt .
