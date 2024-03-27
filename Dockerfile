@@ -14,7 +14,7 @@ RUN yum clean all
 # Copy the local code to the container
 # COPY . /var/www/html/
 # COPY webapp/ . /var/lib/jenkins/workspace/kub-jen-deploy 
-COPY C:\Users\falon\Documents\kubernetes-jenkins-deploy\webapp/ .
+COPY \Users\falon\Documents\kubernetes-jenkins-deploy\webapp/ .
 # COPY webapp/index.html .
 # COPY webapp/license.txt .
 # COPY webapp/js/ js/
