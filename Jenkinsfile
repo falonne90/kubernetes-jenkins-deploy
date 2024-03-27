@@ -8,7 +8,7 @@ pipeline {
                     // Build Docker image
                     sh 'pwd'
                     sh 'ls'
-                    docker.build("falonnengass/my-docker-repo:new-imagev1.0", "/var/lib/jenkins/workspace/new-pipeline")
+                    docker.build("falonnengass/my-docker-repo:new-imagev1.0", "/var/lib/jenkins/workspace/kub-jen-deploy")
                     // Replace "/path/to/Dockerfile" with the actual path to your Dockerfile
                     sh 'docker images'
                 }       
