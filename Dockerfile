@@ -13,14 +13,15 @@ RUN yum -y install httpd
 RUN yum clean all
 # Copy the local code to the container
 # COPY . /var/www/html/
-# COPY webapp/ .
-COPY webapp/index.html .
-COPY webapp/license.txt .
-COPY webapp/js/ js/
-COPY webapp/js/ js/
-COPY webapp/img/ img/
-COPY webapp/css/ css/
-COPY webapp/fonts/ fonts/
+COPY webapp/ . /var/lib/jenkins/workspace/kub-jen-deploy
+# COPY webapp/index.html .
+# COPY webapp/license.txt .
+# COPY webapp/js/ js/
+# COPY webapp/js/ js/
+# COPY webapp/img/ img/
+# COPY webapp/css/ css/
+# COPY webapp/fonts/ fonts/
+
 # Copy index.html /var/www/html/
 
 # Expose a port (if your application needs it) inthis case i exposed port 80
